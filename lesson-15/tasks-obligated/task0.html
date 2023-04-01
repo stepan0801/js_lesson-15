@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../../css/style.css">
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 0</h1>
+		<p> Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+			Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+		</p>
+		<script>
+			//1. ВВодимо необхідні дані
+			let obj1 ={
+				arr: [15,25,45,21,47,3,9,79,16,56,18,38],
+				getSome: function () {
+					return this.arr.reduce((prevSome, element)=> prevSome+element,0)
+				}
+			}
+			// console.log(obj1.getSome());
+
+			let obj2 = {
+				arr: [36,78,12,19,98,73,49,46,81,72,31],
+				getProduct: function (minValue,maxValue) {
+					return  this.arr.reduce((prevProd, element)=> (element>minValue&&element<maxValue ? prevProd*element:prevProd),1)
+				}
+			}
+			//  console.log(obj2.getProduct(19,50));
+
+			// Обчислюємо та виводимо результат
+			const varint1 = obj1.getSome.call(obj2)
+			const varint2 = obj1.getSome.apply(obj2)
+			const varint3 = obj2.getProduct.call(obj1, 19,64)
+			const varint4 = obj2.getProduct.apply(obj1,[19,64])
+			document.write(`<p>${varint1}</p>
+			<p>${varint2}</p>
+			<p>${varint3}</p>
+			<p>${varint4}</p>`
+			)
+		</script>
+	</body>
+</html>

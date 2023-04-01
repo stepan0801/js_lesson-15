@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../../css/style.css">
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 3</h1>
+		<p> Розробити клас «Керівник танців»<br>Поля<br>- Масив імен хлопців<br>- Масив імен дівчат<br>
+			Методи<br>- Метод випадкового вибору імені хлопця<br>- Метод випадкового вибору імені дівчини<br>
+			- Метод виведення пари для танців<br>- Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців</p>
+		<script>
+			//ВВодимо необхідні дані
+			class Choreographer {
+				constructor(){
+					this.boysArr = ['Steven','Andrew','Johny','Michael','Bruce','Brad','Wayne'],
+					this.boysCount = this.boysArr.length-1,
+					this.girlsArr = ['Sara','Helen','Penelopa','Kristin','Jesica','Monika','Elizabeth'],
+					this.girlsCount = this.girlsArr.length-1
+				}
+
+				getRandomBoyName(){
+					return this.boysArr[Math.round(Math.random()*(this.boysCount))]
+				}
+				getRandomGirlName(){
+					return this.girlsArr[Math.round(Math.random()*(this.girlsCount))]
+				}
+
+				getPrintDancePair(){
+					return document.write(`<p>Випадковою танцювальною парою буде: ${this.getRandomBoyName()} та ${this.getRandomGirlName()}</p>`)
+				}
+				run(){
+					return setInterval(() => {
+						`<p>${this.getPrintDancePair()}</p>`
+					}, 5000);
+				}
+			}
+
+			//Виводимо результат
+
+			let choreographer = new Choreographer()
+
+			choreographer.getPrintDancePair()
+			choreographer.run()
+		</script>
+	</body>
+</html>

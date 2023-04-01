@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../../css/style.css">
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 2</h1>
+		<p>Створити об’єкт «Авто».<br> Авто<br> Поля(властивості)<br> - Марка<br>-Розмір бака<br>-Кількість наявних літрів<br>-Кількість місць<br>-Кількість пасажирів<br>Методи (дії)<br>-Заправка на вказану кількість літрів<br>-Виведення кількості пасажирів<br>-Додавання пасажирів<br>-Висадка пасажирів</p>
+		<script>
+			//ВВодимо необхідні дані
+			function Auto(initMark,initTankSize,initCurrentLitresCount,initPlaceCount,initPassangersCount) {
+				this.mark = initMark,
+				this.tankSize = initTankSize,
+				this.currentLitresCount = initCurrentLitresCount,
+				this.placeCount = initPlaceCount,
+				this.passangersCount = initPassangersCount
+			}
+
+			Auto.prototype.getRefueling = function () {
+				const userLitresWant = parseInt(prompt('Введіть кількість літрів для заправки'))
+				if (userLitresWant>0&&userLitresWant <= (this.tankSize - this.currentLitresCount)) return alert(`Наявна кількість літрів: ${userLitresWant+this.currentLitresCount}`)
+				else if (userLitresWant>0&&userLitresWant >= (this.tankSize - this.currentLitresCount)) return alert('Ви перевищуєте місткість баку')
+				else alert('Невірна кількість літрів')
+			}
+
+			Auto.prototype.printPassangersQuantity = function () {
+				alert(`Кількість пасажірів в авто: ${this.passangersCount}`)
+			}
+
+			Auto.prototype.getPassangersPlus = function () {
+				const userPassangersPlus = parseInt(prompt('Введіть кількість пасажірів, яких хочете додати'))
+				if (userPassangersPlus>0&&userPassangersPlus<=(this.placeCount-this.passangersCount)) return alert(`Наявна кількість пасажірів: ${userPassangersPlus+this.passangersCount}`)
+				else if (userPassangersPlus>0&&userPassangersPlus >= (this.placeCount-this.passangersCount)) return alert('Ви перевищуєте пасажиро-місткість авто')
+				else alert('Невірна кількість пасажірів для паосадки')
+			} 
+
+			Auto.prototype.getPassangersOut = function () {
+				const userPassangersOut = parseInt(prompt('Введіть кількість пасажірів, яких хочете висадити'))
+				if (userPassangersOut>0&&userPassangersOut<this.passangersCount) return alert(`Наявна кількість пасажірів: ${this.passangersCount-userPassangersOut}`)
+				else if (userPassangersOut>0&&userPassangersOut>this.passangersCount) return alert(`Кількість пасажирів для висадки перевищує наявну`)
+				else alert('Невірна кількість пасажірів для висадки')
+			}
+
+			//Виводимо результ
+			
+			let someAuto = new Auto('BMW',50,15,8,3)
+			someAuto.getRefueling()
+			someAuto.printPassangersQuantity()
+			someAuto.getPassangersPlus()
+			someAuto.getPassangersOut()
+
+			console.log(someAuto.getRefueling());
+
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../../css/style.css">
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 4</h1>
+		<p> Розробити клас Baner <br>Поля<br>-Масив об’єктів ( графічних зображень та посилань на сайти)<br>методи<br>- Метод випадкового вибору об’єкта (графічного зображення та посилання)<br>- Метод виведення випадкового банера</p>
+		<script>
+			//ВВодимо необхідні дані
+			class Banner {
+				constructor(){
+					this.arrWithLogoAndLinks = [
+					{
+						logo: 'img/nike.png',
+						link: '"https://www.nike.com/"'
+					},
+					{
+						logo: 'img/adidas.png',
+						link: "https://www.adidas.ua/"
+					},
+					{
+						logo: 'img/puma.jpg',
+						link: "https://ua.puma.com/"
+					},
+					{
+						logo: 'img/reebok.png',
+						link: 'https://www.reebok.in.ua'
+					}
+					]
+				}
+
+				getRandomBanner(){
+					return this.arrWithLogoAndLinks[Math.round(Math.random()*3)]
+				}
+				
+				getPrintBanner(){
+					const randomBaner= this.getRandomBanner()
+					document.write(`<div><a href="${randomBaner.link}">Link</a></div><div><img src="../${randomBaner.logo}" alt="reebok"></div> 
+					`)
+				}
+			}
+
+			//Виводимо результ
+
+			let banner = new Banner()
+			banner.getPrintBanner()
+			
+		</script>
+	</body>
+</html>

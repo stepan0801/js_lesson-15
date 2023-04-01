@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../../css/style.css">
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 1</h1>
+		<p>Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку. <br>Тир<br>Поля(властивості): Масив, у якому зберігається поле з зайцями<br>Методи (дії)<br>- Метод пострілу (задається позиція пострілу)<br>- Виведення ігрового поля</p>
+		<script>
+			// Вводимо необхідні дані для створення масиву з даними
+			function ShootingGallery(fieldNumbers) {
+				this.gameField = [],
+				this.fieldNumbers = fieldNumbers
+			}
+
+			ShootingGallery.prototype.getRandomNumber = function () {
+        return Math.floor(Math.random() * (1 - 0 + 1))
+      	}
+
+			ShootingGallery.prototype.getGameField = function (fieldNumbers) {
+				for (let i = 0; i < this.fieldNumbers; i++) {
+					this.gameField.push(this.getRandomNumber())
+				}
+				return this.gameField
+			}
+			
+			ShootingGallery.prototype.getUserShoot = function() {
+				do {
+				let shootFromUser = parseInt(prompt(`Зробіть постріл, обравши поле від 1 до 10`))
+				if (this.gameField[shootFromUser] === 1) {
+					alert('Ви влучили')
+					this.gameField[shootFromUser]=0
+				}
+				else alert('Ви промахнулись')
+			} while (confirm('Граємо ще?'));
+			}
+			
+			//Робимо обчислення та виводимо результат
+
+			ShootingGallery.prototype.printFieldList = function () {
+				document.write(`${this.gameField}`)
+			}
+			let shootingGallery = new ShootingGallery(10)
+			shootingGallery.getUserShoot()
+			shootingGallery.printFieldList()
+			console.log(shootingGallery.getGameField(10));
+		</script>
+	</body>
+</html>
